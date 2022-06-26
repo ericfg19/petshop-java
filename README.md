@@ -9,12 +9,13 @@ atendente e para solicitar um dos serviços. O cliente deve informar seus dados 
 seu animal. Os serviços são Exame, Hospedagem e Higiene. Cada um possui propriedades,
 condições e valores diferentes.
 
-#### CLASSE PRINCIPAL: ATENDIMENTO
-#### CLASSE DE ASSOCIAÇÃO: CLIENTE
--
-#### CLASSE MÃE: SERVIÇO
-#### PRIMEIRA CLASSE FILHA: EXAME
-#### SEGUNDA CLASSE FILHA: HIGIENE
-#### TERCEIRA CLASSE FILHA: HOSPEDAGEM
 
 ![](https://github.com/ericfg19/petshop-java/blob/main/apppetshop/src/main/resources/static/img/classdiagram.jpg)
+
+- CLASSE PRINCIPAL: ATENDIMENTO
+- CLASSE DE ASSOCIAÇÃO: CLIENTE
+
+- CLASSE MÃE: SERVIÇO
+- PRIMEIRA CLASSE FILHA: EXAME
+- SEGUNDA CLASSE FILHA: HIGIENE
+- TERCEIRA CLASSE FILHA: HOSPEDAGEM
