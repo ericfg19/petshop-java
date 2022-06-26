@@ -12,6 +12,7 @@ public class Atendimento {
 	private String descricao;
 	private List<Servico> servico;
 	private boolean web;
+
 	
 	public Atendimento() {
 		descricao = "Primeiro Atendimento";
@@ -33,12 +34,16 @@ public class Atendimento {
 			sb.append(cliente.toString());
 			sb.append(";");
 			sb.append(servico.size());
+			sb.append(";");
+
 			
 			
 			return sb.toString();
 	}
 	
 	
+
+
 	public LocalDateTime getData() {
 		return data;
 	}

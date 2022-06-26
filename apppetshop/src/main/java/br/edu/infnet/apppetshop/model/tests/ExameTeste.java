@@ -11,7 +11,7 @@ public class ExameTeste {
 		exame.setConsulta(1);
 		exame.setVacina(true);
 		exame.setInformacao("Precisará realizar hemograma");
-		System.out.println("Valor = " +exame.calcularExame());
+		System.out.println("Valor = " +exame.calcularServico());
 	}
 
 }

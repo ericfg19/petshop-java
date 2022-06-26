@@ -16,7 +16,8 @@ public abstract class Servico {
 		this.codigo = codigo;
 	}
 
-	public abstract float calcularExame();
+	public abstract float calcularServico();
+	
 	
 	@Override
 	public String toString() {

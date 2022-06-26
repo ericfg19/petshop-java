@@ -13,12 +13,21 @@ public class ServicoTeste {
 		exame.setConsulta(1);
 		exame.setVacina(true);
 		exame.setInformacao("Precisará realizar hemograma");
-		System.out.println("Exame: " + exame);
+		System.out.println("Informações do Exame: " + exame);
 		
-	//	Higiene higiene = new Higiene();
 		
-	//	Hospedagem hospedagem = new Hospedagem();
+		Hospedagem hospedagem = new Hospedagem("Clinica Tijuca", 199, 456);
+		hospedagem.setDiaria(2);
+		hospedagem.setGrande(false);
+		hospedagem.setCuidados("Animal não possui uma pata");
+		System.out.println("Informações de Hospedagem: " +hospedagem);
 		
+		
+		Higiene higiene = new Higiene("Banho e Tosa", 80.50f, 789);
+		higiene.setQuantidade(1);
+		higiene.setUnhas(true);
+		higiene.setDetalhes("Ter cuidado ao limpar a orelha");
+		System.out.println("Informações de Higiene: " +higiene);
 	}
 
 }

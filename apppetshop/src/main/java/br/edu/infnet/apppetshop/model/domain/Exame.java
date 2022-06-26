@@ -17,7 +17,7 @@ public class Exame extends Servico {
 
 
 	@Override
-	public float calcularExame() {
+	public float calcularServico() {
 		
 		if(vacina) 
 		{
@@ -29,8 +29,6 @@ public class Exame extends Servico {
 	}
 	
 	public String toString() {
-		
-		
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
