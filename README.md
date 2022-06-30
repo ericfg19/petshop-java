@@ -5,8 +5,9 @@
 Professor: Elberth Moraes
 
 Este projeto é um sistema de petshop, em que um cliente entra em contato com o
-atendente e para solicitar um dos serviços. O cliente deve informar seus dados e o nome do
-seu animal. Os serviços são Exame, Hospedagem e Higiene. Cada um possui propriedades,
+atendente e para solicitar um dos serviços. O cliente é obrigado a informar seus 
+dados como nome, cpf, email. É opcional colocar o nome do animal de estimação.
+Os serviços são Exame, Hospedagem e Higiene. Cada um possui propriedades,
 condições e valores diferentes.
 
 
