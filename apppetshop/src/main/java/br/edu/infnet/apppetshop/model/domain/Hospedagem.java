@@ -1,6 +1,7 @@
 package br.edu.infnet.apppetshop.model.domain;
 
-
+import br.edu.infnet.apppetshop.model.exceptions.HospedagemInvalidoException;
+import br.edu.infnet.apppetshop.model.exceptions.ValorInvalidoException;
 
 public class Hospedagem extends Servico {
 	
@@ -9,19 +10,21 @@ public class Hospedagem extends Servico {
 	private String cuidados;
 	
 	
-	public Hospedagem(String nome, float valor, int codigo) {
+	public Hospedagem(String nome, float valor, int codigo) throws ValorInvalidoException {
 		super(nome, valor, codigo);
-
 	}
 	
 	
 	@Override
-	public float calcularServico() {
-		if(grande) 
-		{
-			return (getValor() + 220) * diaria;
+	public float calcularServico() throws HospedagemInvalidoException {
+
+		if(diaria < 0) {
+			throw new HospedagemInvalidoException("Não foi possível solicitar o serviço de hospedagem pois o número de diárias em "+getNome()+" inserido está negativo.");
+		} else if(diaria == 0) {
+			throw new HospedagemInvalidoException("Não foi possível solicitar o serviço de hospedagem pois o número de diárias em "+getNome()+" inserido está zero.");
 		}
-		return getValor() * diaria;
+		
+		return getValor() * diaria + (grande ? 220f : 0);
 	}
 
 	public String toString() {

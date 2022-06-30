@@ -1,5 +1,8 @@
 package br.edu.infnet.apppetshop.model.domain;
 
+import br.edu.infnet.apppetshop.model.exceptions.HigieneInvalidoException;
+import br.edu.infnet.apppetshop.model.exceptions.ValorInvalidoException;
+
 public class Higiene extends Servico {
 	
 
@@ -10,19 +13,21 @@ public class Higiene extends Servico {
 	private boolean unhas;
 	private String detalhes;
 	
-	public Higiene(String nome, float valor, int codigo) {
+	public Higiene(String nome, float valor, int codigo) throws ValorInvalidoException {
 		super(nome, valor, codigo);
-		
 	}
 	
 	
 	@Override
-	public float calcularServico() {
-		if(unhas) 
-		{
-			return (getValor() + 25) * quantidade;
+	public float calcularServico() throws HigieneInvalidoException {
+		
+		if(quantidade < 0) {
+			throw new HigieneInvalidoException("Não é possível solicitar o atendimento "+getNome()+" pois a quantidade não pode ser negativa.");
+		} else if(quantidade == 0) {
+			throw new HigieneInvalidoException("Não é possível solicitar o atendimento "+getNome()+" pois a quantidade não pode ser zero.");
 		}
-		return getValor() * quantidade;
+
+		return getValor() * quantidade + (unhas ? 25f : 0);
 	}
 	
 	

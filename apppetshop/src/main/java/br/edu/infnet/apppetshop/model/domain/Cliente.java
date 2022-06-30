@@ -1,5 +1,8 @@
 package br.edu.infnet.apppetshop.model.domain;
 
+import br.edu.infnet.apppetshop.model.exceptions.ClienteInvalidoException;
+import br.edu.infnet.apppetshop.model.exceptions.HigieneInvalidoException;
+
 public class Cliente {
 	
 	private String nome;
@@ -7,7 +10,16 @@ public class Cliente {
 	private String email;
 	private String nomepet;
 
-	public Cliente(String nome, String cpf, String email, String nomepet) {
+	public Cliente(String nome, String cpf, String email, String nomepet) throws ClienteInvalidoException {
+		
+		if(nome == null) {
+			throw new ClienteInvalidoException("Não é possível cadastrar um cliente sem NOME.");
+		} else if(cpf == null) {
+			throw new ClienteInvalidoException("Não é possível cadastrar um cliente sem CPF.");
+		} else if(email == null) {
+			throw new ClienteInvalidoException("Não é possível cadastrar um cliente sem EMAIL.");
+		}
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;

@@ -1,6 +1,7 @@
 package br.edu.infnet.apppetshop.model.domain;
 
-
+import br.edu.infnet.apppetshop.model.exceptions.ExameInvalidoException;
+import br.edu.infnet.apppetshop.model.exceptions.ValorInvalidoException;
 
 public class Exame extends Servico {
 	
@@ -9,7 +10,7 @@ public class Exame extends Servico {
 	private String informacao;
 	
 
-	public Exame(String nome, float valor, int codigo) {
+	public Exame(String nome, float valor, int codigo) throws ValorInvalidoException {
 		super(nome, valor, codigo);
 		
 	}
@@ -17,15 +18,16 @@ public class Exame extends Servico {
 
 
 	@Override
-	public float calcularServico() {
-		
-		if(vacina) 
-		{
-			return (getValor() + 70) * consulta;
+	public float calcularServico() throws ExameInvalidoException {
+		if(consulta < 0) {
+			throw new ExameInvalidoException("Não é possível solicitar o exame pois o número consultas de "+getNome()+" está negativo.");
+		} else if(consulta == 0) {
+			throw new ExameInvalidoException("Não é possível solicitar o exame pois o número consultas de "+getNome()+" está zero.");
 		}
 
 		
-		return getValor() * consulta;
+		
+		return getValor() * consulta + (vacina ? 70f : 0);
 	}
 	
 	public String toString() {

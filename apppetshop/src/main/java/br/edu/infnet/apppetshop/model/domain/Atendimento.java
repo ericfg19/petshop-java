@@ -4,24 +4,48 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import br.edu.infnet.apppetshop.model.exceptions.AtendimentoSemClienteException;
+import br.edu.infnet.apppetshop.model.exceptions.AtendimentoSemServicoException;
+import br.edu.infnet.apppetshop.model.exceptions.ClienteInvalidoException;
+
 public class Atendimento {
 	
 	
 	private Cliente cliente;
 	private LocalDateTime data;
 	private String descricao;
-	private List<Servico> servico;
 	private boolean web;
+	private List<Servico> servico;
 
 	
-	public Atendimento() {
+	public Atendimento(Cliente cliente) throws AtendimentoSemClienteException {
+		
+		if(cliente == null) {
+			throw new AtendimentoSemClienteException("Não existe um cliente associado ao atendimento.");
+		}
+		
 		descricao = "Primeiro Atendimento";
 		data = LocalDateTime.now();
 		web = true;
+		
+		this.cliente = cliente;
+	}
+	
+	public void impressao() throws AtendimentoSemServicoException {
+		
+		if(servico == null) {
+			throw new AtendimentoSemServicoException("Não existe um serviço associado ao atendimento.");
+		}
+		
+		System.out.println(this);
+		
+		for(Servico servico : servico) {
+			System.out.println(servico);
+		}
 	}
 	
 	public String toString() {
-			
+		
 			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 			
 			StringBuilder sb = new StringBuilder();
@@ -33,7 +57,9 @@ public class Atendimento {
 			sb.append(";");
 			sb.append(cliente.toString());
 			sb.append(";");
-			sb.append(servico.size());
+			sb.append(servico != null ? servico.size() : 0);
+			
+		
 			sb.append(";");
 
 			
@@ -72,9 +98,15 @@ public class Atendimento {
 	public Cliente getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+
+
+	public String obterDadosArquivo() {
 		
+		StringBuilder sb = new StringBuilder();
+		sb.append(this);
+		sb.append("\r\n");
+
+		return sb.toString();
 	}
 
 
